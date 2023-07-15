@@ -31,29 +31,29 @@ pca = PCA()
 
 pca.fit(X)
 
-explained_variance_ratio = pca.explained_variance_ratio_
+varianceRatio = pca.explained_variance_ratio_
 print("Explained Variance Ratio:")
-print(explained_variance_ratio)
+print(varianceRatio)
 
-principal_components = pca.components_
+principalComponents = pca.components_
 print("Principal Components:")
-print(principal_components)
+print(principalComponents)
 
-X_pca = pca.transform(X)
-print(X_pca)
+XPca = pca.transform(X)
+print(XPca)
 
 #We now have the PCA values for our data, which is more "compact" than before
 
 #Logistic regression portion of the code:
 #We already have the values for our features, which will be X_pca
-Y_var = df['diagnosis'] 
-Y_var = Y_var.astype('int')
+YVar = df['diagnosis'] 
+YVar = YVar.astype('int')
 
-X_train, X_test, Y_train, Y_test = train_test_split(X_pca, Y_var)
+XTrain, XTest, YTrain, YTest = train_test_split(XPca, YVar)
 model = LogisticRegression()
-model.fit(X_train, Y_train)
+model.fit(XTrain, YTrain)
 
-Y_pred = model.predict(X_test)
+YPred = model.predict(XTest)
 
-accuracy = accuracy_score(Y_test, Y_pred)
+accuracy = accuracy_score(YTest, YPred)
 print("Accuracy:", accuracy)
